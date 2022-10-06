@@ -26,7 +26,16 @@ public class UserController {
 
     @GetMapping(path = "/users")
     public List<UserResponse> fetchUsers(){
-        return userService.fetchUsers().stream().map(p -> new UserResponse(p.getFirstName(),p.getLastName(),p.getGender(),p.getPhone(),p.getEmail(),p.getPassword(),p.getRole(),p.getAddress())).collect(Collectors.toList());
+        return userService.fetchUsers().stream().map(p -> new UserResponse(
+                p.getId(),
+                p.getFirstName(),
+                p.getLastName(),
+                p.getGender(),
+                p.getPhone(),
+                p.getEmail(),
+                p.getPassword(),
+                p.getRole(),
+                p.getAddress())).collect(Collectors.toList());
     }
 
     @PostMapping(path = "/registration")

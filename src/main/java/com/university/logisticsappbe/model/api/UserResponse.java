@@ -8,7 +8,7 @@ import javax.persistence.Column;
 @Data
 @AllArgsConstructor
 public class UserResponse {
-
+    private Long id;
     private String firstName;
     private String lastName;
     private String gender;

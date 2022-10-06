@@ -27,7 +27,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                         "/register",
                         "/demo_server.html",
                         "/api/v1/**",
-                        "/api/v2/**",
                         "/swagger-ui/**",
                         "/v3/api-docs/**").permitAll().
                 anyRequest().authenticated();
