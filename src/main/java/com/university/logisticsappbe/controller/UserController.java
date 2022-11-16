@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,5 +47,16 @@ public class UserController {
     )
     public Long createUser(@Validated @RequestBody CreateUserRequest request){
         return userService.createUser(request).getId();
+    }
+
+    @PutMapping(path = "/users/{id}")
+    public DtoUser updateUser(@Validated @RequestBody DtoUser user, @PathVariable Long id){
+        return userService.updateUser(user, id);
+    }
+
+    @DeleteMapping(value = "/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -35,4 +35,13 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+    public DtoUser updateUser(DtoUser user, Long id){
+        user.setId(id);
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
 }
