@@ -14,4 +14,5 @@ public class CreateRouteRequest {
     private String pointB;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private String status;
 }

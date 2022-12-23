@@ -1,19 +1,18 @@
 package com.university.logisticsappbe.model.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import net.bytebuddy.implementation.bind.annotation.Empty;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity(name = "USERS")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 public class DtoUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

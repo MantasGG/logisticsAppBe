@@ -26,4 +26,7 @@ public class DtoComment {
 
     @Column(name = "comment")
     private String comment;
+
+    @Column(name = "CREATED_BY")
+    private String createdBy;
 }

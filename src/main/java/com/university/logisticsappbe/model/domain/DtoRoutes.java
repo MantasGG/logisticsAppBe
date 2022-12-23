@@ -33,4 +33,7 @@ public class DtoRoutes {
 
     @Column(name = "END_DATE", nullable = false)
     private LocalDateTime endDate;
+
+    @Column(name = "STATUS", nullable = false)
+    private String status;
 }

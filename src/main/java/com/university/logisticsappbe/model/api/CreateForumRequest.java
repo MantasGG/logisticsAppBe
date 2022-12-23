@@ -8,4 +8,5 @@ import lombok.Data;
 public class CreateForumRequest {
     private String title;
     private String body;
+    private String createdBy;
 }

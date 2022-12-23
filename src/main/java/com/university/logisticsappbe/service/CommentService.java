@@ -36,6 +36,7 @@ public class CommentService {
                 .forumId(request.getForumId())
                 .replyId(request.getReplyId())
                 .comment(request.getComment())
+                .createdBy(request.getCreatedBy())
                 .build();
         return commentRepository.save(comment);
     }

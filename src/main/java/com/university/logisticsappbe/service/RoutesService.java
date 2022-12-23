@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoutesService {
@@ -21,6 +22,14 @@ public class RoutesService {
         return routesRepository.findAll();
     }
 
+    public List<DtoRoutes> fetchAllByAssignedUserId(Long assignedUserId){
+        return routesRepository.findAllByAssignedUserId(assignedUserId);
+    }
+
+    public List<DtoRoutes> fetchAllWhereAssignedUserIdIsNull(){
+        return routesRepository.findAllByAssignedUserIdIsNull();
+    }
+
     public DtoRoutes createRoute(CreateRouteRequest request){
         DtoRoutes route = DtoRoutes.builder()
                 .assignedUserId(request.getAssignedUserId())
@@ -28,6 +37,7 @@ public class RoutesService {
                 .pointB(request.getPointB())
                 .startDate(request.getStartDate())
                 .endDate(request.getEndDate())
+                .status(request.getStatus())
                 .build();
 
         return routesRepository.save(route);
@@ -40,5 +50,13 @@ public class RoutesService {
 
     public void deleteRoute(Long id){
         routesRepository.deleteById(id);
+    }
+
+    public int assignRoute(Long id, Long userId) {
+        return routesRepository.updateRoute(id, userId);
+    }
+
+    public int unassignRoute(Long id){
+        return routesRepository.updateRouteRemoveAssignedUserId(id);
     }
 }

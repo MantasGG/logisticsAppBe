@@ -3,6 +3,7 @@ package com.university.logisticsappbe.service;
 import com.university.logisticsappbe.model.api.CreateCheckpointRequest;
 import com.university.logisticsappbe.model.api.CreateRouteRequest;
 import com.university.logisticsappbe.model.domain.DtoCheckpoint;
+import com.university.logisticsappbe.model.domain.DtoRoutes;
 import com.university.logisticsappbe.repository.CheckpointRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

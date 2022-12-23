@@ -4,6 +4,7 @@ import com.university.logisticsappbe.model.api.CreateUserRequest;
 import com.university.logisticsappbe.model.domain.DtoUser;
 import com.university.logisticsappbe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
+
     public List<DtoUser> fetchUsers(){
         return userRepository.findAll();
     }
@@ -28,7 +32,7 @@ public class UserService {
                 .gender(request.getGender())
                 .email(request.getEmail())
                 .phone(request.getPhone())
-                .password(request.getPassword())
+                .password(bcryptEncoder.encode(request.getPassword()))
                 .role(request.getRole())
                 .address(request.getAddress())
                 .build();

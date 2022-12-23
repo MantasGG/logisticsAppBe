@@ -25,6 +25,7 @@ public class ForumService {
         DtoForum forum = DtoForum.builder()
                 .title(request.getTitle())
                 .body(request.getBody())
+                .createdBy(request.getCreatedBy())
                 .build();
         return forumRepository.save(forum);
     }

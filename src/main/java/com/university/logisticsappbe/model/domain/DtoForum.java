@@ -23,4 +23,7 @@ public class DtoForum {
 
     @Column(name = "BODY")
     private String body;
+
+    @Column(name = "CREATED_BY")
+    private String createdBy;
 }

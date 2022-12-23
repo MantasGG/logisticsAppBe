@@ -25,6 +25,16 @@ public class RoutesController {
         return routesService.fetchRoutes();
     }
 
+    @GetMapping(path = "/routes/{assignedUserId}")
+    public List<DtoRoutes> fetchRoutesByEmail(@PathVariable Long assignedUserId){
+        return routesService.fetchAllByAssignedUserId(assignedUserId);
+    }
+
+    @GetMapping(path = "/routes/notassigned")
+    public List<DtoRoutes> fetchAllWhereAssignedUserIdIsNull(){
+        return routesService.fetchAllWhereAssignedUserIdIsNull();
+    }
+
     @PostMapping(path = "/routes")
     public Long createRoute(@Validated @RequestBody CreateRouteRequest request){
         return routesService.createRoute(request).getId();
@@ -33,6 +43,16 @@ public class RoutesController {
     @PutMapping(path = "/routes/{id}")
     public DtoRoutes updateRoute(@Validated @RequestBody DtoRoutes route, @PathVariable Long id){
         return routesService.updateRoute(route,id);
+    }
+
+    @GetMapping(path = "/routes/assign/{id}/{userId}")
+    public int assignRoute(@PathVariable Long id, @PathVariable Long userId){
+        return routesService.assignRoute(id, userId);
+    }
+
+    @GetMapping(path = "/routes/unassign/{id}")
+    public int assignRoute(@PathVariable Long id){
+        return routesService.unassignRoute(id);
     }
 
     @DeleteMapping(value = "/routes/{id}")
